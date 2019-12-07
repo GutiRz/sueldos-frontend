@@ -5,15 +5,16 @@ import { LoginComponent } from './login.component';
 
 export const LoginContainer: React.FunctionComponent = () => {
   const history = useHistory();
-  const [teamCode, setTeamCode] = React.useState('Tu código');
+  const [teamCode, setTeamCode] = React.useState('Código');
   const [teamExist, setTeamExist] = React.useState(false);
+  const [team, setTeam] = React.useState({});
 
   React.useEffect(() => {
     fetch(`http://localhost:3000/equipo/${teamCode}`)
       .then(response => response.json())
       .then(data => {
         data[0] ? setTeamExist(true) : setTeamExist(false);
-        console.log(teamExist);
+        setTeam(data[0]);
       })
   }, [teamCode])
 
@@ -23,7 +24,10 @@ export const LoginContainer: React.FunctionComponent = () => {
 
   const doLogin = () => {
     teamExist 
-    ? history.push('/myteam') 
+    ? history.push({
+      pathname: '/myteam',
+      state: { team }
+    }) 
     : alert('El código de acceso no es correcto, ponte en contacto con Sesi')
   }
 
