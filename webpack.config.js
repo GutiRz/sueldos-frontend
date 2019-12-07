@@ -8,7 +8,7 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"]
   },
-  entry: ["@babel/polyfill", "./index.jsx"],
+  entry: ["@babel/polyfill", "./index.tsx"],
   output: {
     filename: "bundle.js"
   },
