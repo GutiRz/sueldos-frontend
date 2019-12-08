@@ -6,7 +6,7 @@ import { LoginComponent } from './login.component';
 
 export const LoginContainer: React.FunctionComponent = () => {
   const history = useHistory();
-  const [teamCode, setTeamCode] = React.useState('Código');
+  const [teamCode, setTeamCode] = React.useState('');
   const [teamExist, setTeamExist] = React.useState(false);
   const [team, setTeam] = React.useState({});
 
