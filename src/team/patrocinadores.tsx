@@ -20,15 +20,15 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface Props {
   patrocinador: string;
-  onPatrocinadorChange: (patrocinador: string) => void;
+  handlePatrocinador: (patrocinador: string) => void;
 }
 
 export const Patrocinadores: React.FunctionComponent<Props> = (props) => {
   const classes = useStyles({});
-  const {patrocinador, onPatrocinadorChange} = props;
+  const {patrocinador, handlePatrocinador} = props;
 
   const onSelectPatrocinador = (e) => {
-    onPatrocinadorChange(e.target.value);
+    handlePatrocinador(e.target.value);
   }
   return (
     <FormControl className={classes.formControl}>

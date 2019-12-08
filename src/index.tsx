@@ -14,7 +14,7 @@ ReactDOM.render(
         component={LoginContainer} 
       />
       <Route
-        path="/myteam"
+        path="/:teamCode"
         component={TeamContainer}
       />
     </Switch>

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {useHistory} from 'react-router-dom';
+import { generatePath } from 'react-router';
 import { LoginComponent } from './login.component';
 
 
@@ -25,7 +26,7 @@ export const LoginContainer: React.FunctionComponent = () => {
   const doLogin = () => {
     teamExist 
     ? history.push({
-      pathname: '/myteam',
+      pathname: generatePath('/:teamCode', {teamCode}),
       state: { team }
     }) 
     : alert('El código de acceso no es correcto, ponte en contacto con Sesi')

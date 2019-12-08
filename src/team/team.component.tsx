@@ -5,6 +5,8 @@ import { Typography } from '@material-ui/core';
 import { useHistory, useLocation } from 'react-router';
 
 import {Patrocinadores} from './patrocinadores';
+import {Jugadores} from './jugadores';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -24,18 +26,27 @@ export const TeamComponent = () => {
 
   React.useEffect(()=> console.log(team), [team])
 
-  const onPatrocinadorChange = (patrocinador) => {
+  const handlePatrocinador = (patrocinador) => {
     setTeam({
       ...team,
       patrocinador
     })
   }
+
+  const handleSueldo = (sueldo, nombreJugador) => {
+    const plantilla = team.plantilla.map(jug => {
+      if(jug.nombre === nombreJugador)  jug.sueldo = parseFloat(sueldo);
+      return jug;
+    })
+    console.log(plantilla); 
+  }
   return (
     <>
       <Avatar className={bigAvatar}>T</Avatar>
       <Typography variant="h2">{team.equipo}</Typography>
-      <Patrocinadores patrocinador={team.patrocinador} onPatrocinadorChange={onPatrocinadorChange} />
-
+      <Patrocinadores patrocinador={team.patrocinador} handlePatrocinador={handlePatrocinador} />
+      <Typography variant="h5">Patrocinador: {team.patrocinador}</Typography>
+      <Jugadores jugadores={team.plantilla} handleSueldo={handleSueldo}/>
     </>
   )
 }
