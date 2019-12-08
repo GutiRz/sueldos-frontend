@@ -14,6 +14,7 @@ export const Jugadores = (props) => {
         <th>Posición</th>
         <th>Sueldo</th>
         <th>Cláusula</th>
+        <th>Transermarkt</th>
       </thead>
       <tbody>
         {
@@ -27,9 +28,11 @@ export const Jugadores = (props) => {
                     type="number"
                     value={jugador.sueldo}
                     onChange={onSueldoChange(jugador.nombre)}
+                    inputProps={{min: "0", max:(jugador.transfermarket/10).toString()}}
                   />
                 </td>
-                <td>{jugador.sueldo * 10}</td>
+                <td>{(jugador.sueldo * 10).toFixed()}</td>
+                <td>{jugador.transfermarket}</td>
               </tr>
             )
           })
