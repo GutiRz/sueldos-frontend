@@ -42,9 +42,12 @@ export const TeamComponent = () => {
       } 
       return jug;
     })
+    const totalSueldos = plantilla.reduce((total, jugador) => total + jugador.sueldo, 0);
+
     setTeam({
       ...team,
-      plantilla
+      plantilla,
+      totalSueldos
     })
   }
 
@@ -68,6 +71,7 @@ export const TeamComponent = () => {
       <Typography variant="h2">{team.equipo}</Typography>
       <Patrocinadores patrocinador={team.patrocinador} handlePatrocinador={handlePatrocinador} />
       <Typography variant="h5">Patrocinador: {team.patrocinador}</Typography>
+      <Typography variant="h5">Total sueldos:{team.totalSueldos}</Typography>
       <Jugadores jugadores={team.plantilla} handleSueldo={handleSueldo}/>
       <Button
         variant="contained" 
