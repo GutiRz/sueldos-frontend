@@ -16,7 +16,8 @@ const useStyles = makeStyles({
     width: "60%",
     minWidth: 650,
     marginLeft: "auto",
-    marginRight: "auto"
+    marginRight: "auto",
+    marginTop: "100px"
   }
 });
 

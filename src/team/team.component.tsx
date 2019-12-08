@@ -19,10 +19,17 @@ const useStyles = makeStyles((theme: Theme) =>
       height: 120
     },
     contenedor: {
-      display: "flex", justifyContent: "center", alignItems: "center"
+      display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"
     },
-    boton: {
-      justifyContent: 'center'
+    separador: {
+      width: "100%"
+    },
+    margen: {
+      marginTop: '100px',
+      marginBottom: '200px'
+    },
+    margen2: {
+      marginTop: '30px',
     }
   })
 );
@@ -76,18 +83,19 @@ export const TeamComponent = () => {
   };
 
   return (
-    <Container>
-      <Typography variant="h3">{team.equipo}</Typography>
-      <img src={team.escudo} alt="Logo" />
+    <Container className={classes.contenedor}>
+      <Typography variant="h3" className={classes.margen2}>{team.equipo}</Typography>
+      <div className={classes.separador}></div>
+      <img src={team.escudo} style={{marginTop: '30px'}} alt="Logo" />
       <Patrocinadores
         patrocinador={team.patrocinador}
         handlePatrocinador={handlePatrocinador}
       />
       <Typography variant="h5">Patrocinador: {team.patrocinador}</Typography>
-      <Typography variant="h5">Total sueldos:{team.totalSueldos}</Typography>
+      <Typography variant="h5" style={{marginTop: '30px'}}>Total sueldos:{team.totalSueldos}</Typography>
       <Jugadores jugadores={team.plantilla} handleSueldo={handleSueldo} />
 
-      <Button variant="contained" color="primary" onClick={sendSalaries} className={classes.boton}>
+      <Button variant="contained" color="primary" onClick={sendSalaries} className={classes.margen}>
         Enviar sueldos
       </Button>
     </Container>
